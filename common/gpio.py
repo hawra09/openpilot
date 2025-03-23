@@ -3,6 +3,7 @@ from functools import cache
 
 def gpio_init(pin: int, output: bool) -> None:
   try:
+    print(f"Initializing GPIO pin {pin} as {'output' if output else 'input'}")
     with open(f"/sys/class/gpio/gpio{pin}/direction", 'wb') as f:
       f.write(b"out" if output else b"in")
   except Exception as e:
